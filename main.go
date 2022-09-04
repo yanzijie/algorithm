@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"github.com/yanzijie/algorithm/link"
 	"github.com/yanzijie/algorithm/search"
+	"github.com/yanzijie/algorithm/sort"
 )
 
 func main() {
-	TestHalfSearch()
+	TestSort()
 }
 
 func TestOneWayLinkList() {
@@ -58,4 +59,10 @@ func TestHalfSearch() {
 		fmt.Println("arr:", arr)
 		fmt.Println("target:", target, "is index:", index)
 	}
+}
+
+func TestSort() {
+	arr := []int{33, 23, 12, 5, 8, 54, 24, 4}
+	arr = sort.QuickSort(arr, 0, 7)
+	fmt.Println("after QuickSort, arr:", arr)
 }
