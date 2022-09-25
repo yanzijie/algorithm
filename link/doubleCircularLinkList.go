@@ -143,6 +143,7 @@ func (d *DoubleList) DeleteByIndex(index int) {
 	// cur指向头节点的时候, count=1
 	count := 1
 	fmt.Println("DeleteByIndex:", index)
+	// 当cur转了一圈回到头节点时候，count肯定不等于1，退出循环
 	for cur != d.head || count == 1 {
 		if count == index {
 			cur.pre.next = cur.next
@@ -180,6 +181,7 @@ func (d *DoubleList) DeleteByValue(value int) {
 	cur := d.head
 	count := 1
 	fmt.Println("DeleteByValue:", value)
+	// 当cur转了一圈回到头节点时候，count肯定不等于1，退出循环
 	for cur != d.head || count == 1 {
 		if value == cur.data {
 			cur.pre.next = cur.next
@@ -217,6 +219,7 @@ func (d *DoubleList) UpdateByIndex(index int, newValue int) {
 	cur := d.head
 	count := 1
 	fmt.Println("UpdateByIndex:", index, ", change to:", newValue)
+	// 当cur转了一圈回到头节点时候，count肯定不等于1，退出循环
 	for cur != d.head || count == 1 {
 		if count == index {
 			cur.data = newValue
@@ -236,6 +239,7 @@ func (d *DoubleList) UpdateByValue(oldValue int, newValue int) {
 	cur := d.head
 	count := 1
 	fmt.Println("UpdateByValue oldValue:", oldValue, ", change to:", newValue)
+	// 当cur转了一圈回到头节点时候，count肯定不等于1，退出循环
 	for cur != d.head || count == 1 {
 		if oldValue == cur.data {
 			cur.data = newValue
@@ -254,6 +258,7 @@ func (d *DoubleList) UpdateByValue(oldValue int, newValue int) {
 func (d *DoubleList) GetIndexByValue(value int) (int, bool) {
 	cur := d.head
 	count := 1
+	// 当cur转了一圈回到头节点时候，count肯定不等于1，退出循环
 	for cur != d.head || count == 1 {
 		if value == cur.data {
 			// 找到了
@@ -276,6 +281,7 @@ func (d *DoubleList) GetValueByIndex(index int) (int, bool) {
 
 	cur := d.head
 	count := 1
+	// 当cur转了一圈回到头节点时候，count肯定不等于1，退出循环
 	for cur != d.head || count == 1 {
 		if index == count {
 			return cur.data, true
