@@ -194,13 +194,13 @@ func (l *List) PrintLink() {
 		return
 	}
 	cur := l.head
-	fmt.Printf("list : ")
+	count := 0
 	for cur != nil {
-		fmt.Printf("%d ", cur.data)
+		fmt.Println("node data:", cur.data, ", index:", count)
 		cur = cur.next
+		count++
 	}
-	fmt.Println()
-	fmt.Println("list length:", l.length)
+	fmt.Println("link length:", l.length)
 }
 
 func (l *List) FindValue(value int) bool {

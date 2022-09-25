@@ -23,7 +23,7 @@ func BubbleSort(arr []int) {
 	fmt.Println("after sort:", arr)
 }
 
-// SelectSort [16,4,12,5,9,14,56,10,35,23]
+// SelectSort 选择排序 [16,4,12,5,9,14,56,10,35,23]
 func SelectSort(arr []int) {
 	for i := 0; i < len(arr); i++ {
 		min := i // 最小元素的下标
