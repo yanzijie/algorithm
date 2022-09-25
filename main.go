@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	TestDoubleLinkList()
+	TestHalfSearch()
 }
 
 // TestDoubleLinkList 测试双向循环链表
@@ -122,9 +122,11 @@ func TestOneWayLinkList() {
 
 func TestHalfSearch() {
 	arr := []int{2, 3, 5, 7, 9, 12, 14, 16}
-	target := 19
-	index := search.HalfSearch(arr, target)
-	if index != -1 {
+	target := 5
+	index, ok := search.HalfSearch(arr, target)
+	if !ok {
+		fmt.Println("target:", target, "not exist")
+	} else {
 		fmt.Println("arr:", arr)
 		fmt.Println("target:", target, "is index:", index)
 	}

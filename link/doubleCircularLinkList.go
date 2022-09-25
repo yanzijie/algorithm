@@ -3,7 +3,7 @@ package link
 import "fmt"
 
 // 双向循环链表
-// 这个代码的index是从1开始算
+// 代码的index是从1开始算
 
 type DoubleNode struct {
 	data int
