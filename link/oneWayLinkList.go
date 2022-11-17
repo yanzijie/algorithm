@@ -29,7 +29,7 @@ type List struct {
 	length uint64 // 链表长度
 }
 
-func InitOneWayLinkList() IOneWayLinkList {
+func NewOneWayLinkList() IOneWayLinkList {
 	return &List{
 		head:   nil,
 		length: 0,

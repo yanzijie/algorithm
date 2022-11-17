@@ -8,11 +8,79 @@ import (
 )
 
 func main() {
-	TestHalfSearch()
+	TestOneWayLoopLink()
 }
 
-// TestDoubleLinkList 测试双向循环链表
-func TestDoubleLinkList() {
+// TestOneWayLinkList 测试单向链表
+func TestOneWayLinkList() {
+	list := link.NewOneWayLinkList()
+
+	list.InsertOnHead(1)
+	list.InsertOnHead(2)
+	list.InsertOnHead(3)
+	list.InsertOnHead(4)
+	list.PrintLink()
+
+	list.InsertOnEnd(5)
+	list.InsertOnEnd(6)
+	list.InsertOnEnd(12)
+	list.PrintLink()
+
+	list.InsertOnIndex(33, 4)
+	list.PrintLink()
+
+	list.DelDataOnIndex(5)
+	list.PrintLink()
+	list.DelDataOnIndex(45)
+	list.PrintLink()
+
+	list.DelData(1)
+	list.PrintLink()
+
+	value := 33
+	res := list.FindValue(value)
+	if res {
+		fmt.Println("list found value:", value)
+	} else {
+		fmt.Println("list not found value:", value)
+	}
+
+	value2 := 46
+	list.UpdateValueByIndex(5, value2)
+	list.PrintLink()
+	list.UpdateValueByIndex(12, value2)
+	list.PrintLink()
+}
+
+// TestOneWayLoopLink 测试单向循环链表
+func TestOneWayLoopLink() {
+	oneLoopLink := link.NewOneLoopLink()
+	oneLoopLink.InsertToHead(4)
+	oneLoopLink.InsertToHead(3)
+	oneLoopLink.InsertToHead(2)
+	oneLoopLink.InsertToHead(1)
+	oneLoopLink.PrintfLink()
+
+	oneLoopLink.InsertToTail(5)
+	oneLoopLink.InsertToTail(6)
+	oneLoopLink.InsertToTail(7)
+	oneLoopLink.InsertToTail(8)
+	oneLoopLink.PrintfLink()
+
+	res := oneLoopLink.InsertByIndex(5, 18)
+	if res {
+		oneLoopLink.PrintfLink()
+	}
+
+	res = oneLoopLink.DeleteByIndex(5)
+	if res {
+		oneLoopLink.PrintfLink()
+	}
+
+}
+
+// TestTwoWayLoopLinkList 测试双向循环链表
+func TestTwoWayLoopLinkList() {
 	list := link.NewDoubleList()
 
 	list.InsertHead(4)
@@ -79,47 +147,7 @@ func TestDoubleLinkList() {
 
 }
 
-// TestOneWayLinkList 测试单向链表
-func TestOneWayLinkList() {
-	list := link.InitOneWayLinkList()
-
-	list.InsertOnHead(1)
-	list.InsertOnHead(2)
-	list.InsertOnHead(3)
-	list.InsertOnHead(4)
-	list.PrintLink()
-
-	list.InsertOnEnd(5)
-	list.InsertOnEnd(6)
-	list.InsertOnEnd(12)
-	list.PrintLink()
-
-	list.InsertOnIndex(33, 4)
-	list.PrintLink()
-
-	list.DelDataOnIndex(5)
-	list.PrintLink()
-	list.DelDataOnIndex(45)
-	list.PrintLink()
-
-	list.DelData(1)
-	list.PrintLink()
-
-	value := 33
-	res := list.FindValue(value)
-	if res {
-		fmt.Println("list found value:", value)
-	} else {
-		fmt.Println("list not found value:", value)
-	}
-
-	value2 := 46
-	list.UpdateValueByIndex(5, value2)
-	list.PrintLink()
-	list.UpdateValueByIndex(12, value2)
-	list.PrintLink()
-}
-
+// TestHalfSearch 测试折半查找
 func TestHalfSearch() {
 	arr := []int{2, 3, 5, 7, 9, 12, 14, 16}
 	target := 5
