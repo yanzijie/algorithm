@@ -65,9 +65,10 @@ func TestOneWayLoopLink() {
 	oneLoopLink.InsertToTail(6)
 	oneLoopLink.InsertToTail(7)
 	oneLoopLink.InsertToTail(8)
+	oneLoopLink.InsertToTail(9)
 	oneLoopLink.PrintfLink()
 
-	res := oneLoopLink.InsertByIndex(5, 18)
+	res := oneLoopLink.InsertByIndex(3, 18)
 	if res {
 		oneLoopLink.PrintfLink()
 	}
@@ -77,6 +78,20 @@ func TestOneWayLoopLink() {
 		oneLoopLink.PrintfLink()
 	}
 
+	res = oneLoopLink.DeleteByValue(7)
+	if res {
+		oneLoopLink.PrintfLink()
+	}
+
+	res = oneLoopLink.ModifyByIndex(2, 9981)
+	if res {
+		oneLoopLink.PrintfLink()
+	}
+
+	res = oneLoopLink.ModifyByValue(18, 81)
+	if res {
+		oneLoopLink.PrintfLink()
+	}
 }
 
 // TestTwoWayLoopLinkList 测试双向循环链表

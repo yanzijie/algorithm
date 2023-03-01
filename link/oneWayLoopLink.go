@@ -174,23 +174,29 @@ func (o *OneLoopLink) DeleteByValue(value int) bool {
 		o.head = nil
 		o.tail = nil
 		o.length = 0
-		fmt.Println("DeleteByIndex success")
+		fmt.Println("DeleteByValue success, value=", value)
 		return true
 	}
 
 	if o.head.data == value {
-		// 删头结点
-	}
-	if o.tail.data == value {
-		// 删尾节点
+		o.tail.next = o.head.next
+		o.head = o.head.next
+		o.length--
+		fmt.Println("DeleteByValue success, value=", value)
+		return true
 	}
 
 	cur := o.head.next
 	pre := o.head
 	for {
-
-		if cur.next == o.head {
-			// 绕到尾巴了,退出
+		if cur.data == value {
+			pre.next = cur.next
+			o.length--
+			fmt.Println("DeleteByValue success, value=", value)
+			return true
+		}
+		if cur == o.tail {
+			// 绕到尾巴了还没找到,退出
 			break
 		}
 		cur = cur.next
@@ -201,13 +207,59 @@ func (o *OneLoopLink) DeleteByValue(value int) bool {
 }
 
 func (o *OneLoopLink) ModifyByIndex(index, value int) bool {
-	//TODO implement me
-	panic("implement me")
+	if index >= o.length {
+		fmt.Println("index too long...")
+		return false
+	}
+
+	// 先把头节点的情况处理了
+	if index == 0 {
+		fmt.Println("ModifyByIndex success, index:", index, " value:", o.head.data, " change to:", value)
+		o.head.data = value
+		return true
+	}
+
+	cur := o.head.next
+	pre := o.head
+	num := 1
+	for {
+		if num == index {
+			fmt.Println("ModifyByIndex success, index:", num, " value:", cur.data, " change to:", value)
+			cur.data = value
+			return true
+		}
+		if num >= o.length {
+			// 没找到
+			break
+		}
+		cur = cur.next
+		pre = pre.next
+		num++
+	}
+	return false
 }
 
 func (o *OneLoopLink) ModifyByValue(oldValue, newValue int) bool {
-	//TODO implement me
-	panic("implement me")
+	if o.head.data == oldValue {
+		fmt.Println("ModifyByValue success, oldValue:", o.head.data, " change to:", newValue)
+		o.head.data = newValue
+		return true
+	}
+	cur := o.head.next
+	pre := o.head
+	for {
+		if cur.data == oldValue {
+			fmt.Println("ModifyByValue success, oldValue:", cur.data, " change to:", newValue)
+			cur.data = newValue
+			return true
+		}
+		if cur == o.tail {
+			break
+		}
+		cur = cur.next
+		pre = pre.next
+	}
+	return false
 }
 
 func (o *OneLoopLink) SearchByIndex(index int) (int, bool) {
