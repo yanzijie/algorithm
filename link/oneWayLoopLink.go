@@ -249,8 +249,8 @@ func (o *OneLoopLink) ModifyByValue(oldValue, newValue int) bool {
 	pre := o.head
 	for {
 		if cur.data == oldValue {
-			fmt.Println("ModifyByValue success, oldValue:", cur.data, " change to:", newValue)
 			cur.data = newValue
+			fmt.Println("ModifyByValue success, oldValue:", cur.data, " change to:", newValue)
 			return true
 		}
 		if cur == o.tail {
@@ -263,13 +263,55 @@ func (o *OneLoopLink) ModifyByValue(oldValue, newValue int) bool {
 }
 
 func (o *OneLoopLink) SearchByIndex(index int) (int, bool) {
-	//TODO implement me
-	panic("implement me")
+	if index < 0 || index > o.length {
+		fmt.Println("index error")
+		return 0, false
+	}
+	if index == 0 {
+		fmt.Println("SearchByIndex success, index:", index, " value is:", o.head.data)
+		return o.head.data, true
+	}
+	if index == o.length-1 {
+		fmt.Println("SearchByIndex success, index:", index, " value is:", o.tail.data)
+		return o.tail.data, true
+	}
+	p := 1
+	cur := o.head.next
+	for cur != o.tail {
+		if p == index {
+			fmt.Println("SearchByIndex success, index:", index, " value is:", cur.data)
+			return cur.data, true
+		}
+		cur = cur.next
+		p++
+	}
+
+	fmt.Println("SearchByIndex failed, index:", index)
+	return 0, false
 }
 
 func (o *OneLoopLink) SearchByValue(value int) (int, bool) {
-	//TODO implement me
-	panic("implement me")
+	if o.head.data == value {
+		fmt.Println("SearchByValue success, value:", value, " index is: 0", o.head.data)
+		return o.head.data, true
+	}
+	if o.tail.data == value {
+		fmt.Println("SearchByValue success, value:", value, " index is: ", o.length-1)
+		return o.tail.data, true
+	}
+	cur := o.head.next
+	index := 1
+	for cur != o.tail {
+		if cur.data == value {
+			fmt.Println("SearchByValue success, value:", value, " index is:", index)
+			return cur.data, true
+		}
+		cur = cur.next
+		index++
+	}
+
+	fmt.Println("SearchByValue failed, value:", value)
+	return 0, false
 }
 
 func (o *OneLoopLink) PrintfLink() {
