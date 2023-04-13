@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-	TestOneWayLoopLink()
 }
 
 // TestHalfSearch 测试折半查找
