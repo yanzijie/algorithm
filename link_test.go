@@ -161,3 +161,35 @@ func TestTwoWayLoopLinkList(t *testing.T) {
 	}
 
 }
+
+func TestLinerList(t *testing.T) {
+	l := link.NewLineList(10)
+	l.InsertList(1)
+	l.InsertList(2)
+	l.InsertList(3)
+	l.InsertList(4)
+	l.InsertList(5)
+	l.InsertList(6)
+	l.InsertList(7)
+	l.InsertList(8)
+	l.PrintList()
+	fmt.Println("after delete")
+	l.DeleteList(3)
+	l.PrintList()
+	res := l.GetLocationByValue(6)
+	if res == -1 {
+		fmt.Println("GetLocationByValue error")
+	} else {
+		fmt.Println("index for value 6 is:", res)
+	}
+
+	res = l.GetValueByLocation(3)
+	if res == -1 {
+		fmt.Println("GetValueByLocation error")
+	} else {
+		fmt.Println("value for index 3 is:", res)
+	}
+	fmt.Println("destroy list")
+	l.DestroyList()
+	l.PrintList()
+}
