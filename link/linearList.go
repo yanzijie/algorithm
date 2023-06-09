@@ -2,7 +2,7 @@ package link
 
 import "fmt"
 
-// 线性表
+// 线性表,同时也是顺序表
 
 type LinearList interface {
 	InsertList(value int)             // 插入数据到线性表
@@ -64,6 +64,7 @@ func (l *LineList) PrintList() {
 }
 
 func (l *LineList) DestroyList() {
+	l.data = make([]int, l.cap)
 	l.len = 0
 }
 

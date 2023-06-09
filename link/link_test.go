@@ -1,8 +1,7 @@
-package main
+package link
 
 import (
 	"fmt"
-	"github.com/yanzijie/algorithm/link"
 	"testing"
 )
 
@@ -10,7 +9,7 @@ import (
 
 // TestOneWayLinkList 测试单向链表
 func TestOneWayLinkList(t *testing.T) {
-	list := link.NewOneWayLinkList()
+	list := NewOneWayLinkList()
 
 	list.InsertOnHead(1)
 	list.InsertOnHead(2)
@@ -51,7 +50,7 @@ func TestOneWayLinkList(t *testing.T) {
 
 // TestOneWayLoopLink 测试单向循环链表
 func TestOneWayLoopLink(t *testing.T) {
-	oneLoopLink := link.NewOneLoopLink()
+	oneLoopLink := NewOneLoopLink()
 	oneLoopLink.InsertToHead(4)
 	oneLoopLink.InsertToHead(3)
 	oneLoopLink.InsertToHead(2)
@@ -96,7 +95,7 @@ func TestOneWayLoopLink(t *testing.T) {
 
 // TestTwoWayLoopLinkList 测试双向循环链表
 func TestTwoWayLoopLinkList(t *testing.T) {
-	list := link.NewDoubleList()
+	list := NewDoubleList()
 
 	list.InsertHead(4)
 	list.InsertHead(3)
@@ -163,7 +162,7 @@ func TestTwoWayLoopLinkList(t *testing.T) {
 }
 
 func TestLinerList(t *testing.T) {
-	l := link.NewLineList(10)
+	l := NewLineList(10)
 	l.InsertList(1)
 	l.InsertList(2)
 	l.InsertList(3)
