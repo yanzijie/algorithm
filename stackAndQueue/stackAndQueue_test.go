@@ -1,6 +1,7 @@
 package stackAndQueue
 
 import (
+	"errors"
 	"fmt"
 	"testing"
 )
@@ -72,4 +73,71 @@ func TestStack(t *testing.T) {
 
 	fmt.Println("after option")
 	stack.Print()
+}
+
+func TestQueue(t *testing.T) {
+	//q := NewDeque()
+	//q.AddRear(1)
+	//q.AddRear(2)
+	//q.AddRear(3)
+	//q.Print()
+
+	d := NewDeque()
+
+	// Test AddFront
+	d.AddFront(2)
+	if d.size != 1 {
+		t.Errorf("AddFront error, expected: %d, got: %d", 1, d.size)
+	}
+
+	// Test RemoveRear
+	d.items = []int{3, 4, 5}
+	d.size = 3
+	item, err := d.RemoveRear()
+	if err != nil || item != 5 || d.size != 2 {
+		t.Errorf("RemoveRear error, expected: %d, %v, %d, got: %d, %v, %d", 5, nil, 2, item, err, d.size)
+	}
+
+	d = NewDeque()
+	_, err = d.RemoveRear()
+	if err == nil {
+		t.Errorf("RemoveRear error, expected: %v, got: %v", errors.New("queue is empty"), err)
+	}
+
+	// Test AddRear
+	d.AddRear(8)
+	if d.size != 1 {
+		t.Errorf("AddRear error, expected: %d, got: %d", 1, d.size)
+	}
+
+	// Test RemoveFront
+	d.items = []int{6, 7, 8}
+	d.size = 3
+	item, err = d.RemoveFront()
+	if err != nil || item != 6 || d.size != 2 {
+		t.Errorf("RemoveFront error, expected: %d, %v, %d, got: %d, %v, %d", 6, nil, 2, item, err, d.size)
+	}
+
+	d = NewDeque()
+	_, err = d.RemoveFront()
+	if err == nil {
+		t.Errorf("RemoveFront error, expected: %v, got: %v", errors.New("queue is empty"), err)
+	}
+
+	// Test IsEmpty
+	d = NewDeque()
+	if !d.IsEmpty() {
+		t.Errorf("IsEmpty error, expected: %v, got: %v", true, false)
+	}
+
+	d.items = []int{1}
+	d.size = 1
+	if d.IsEmpty() {
+		t.Errorf("IsEmpty error, expected: %v, got: %v", false, true)
+	}
+
+	// Test Print
+	d.items = []int{1, 2, 3}
+	d.size = 3
+	d.Print()
 }
